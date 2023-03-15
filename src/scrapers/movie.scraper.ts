@@ -14,9 +14,8 @@ export const scrapeMovies: TScraper<IMovies[]> = async (
   const $ = cheerio.load(res.data);
   const payload: IMovies[] = [];
 
-  $('main > div.container > section.archive > div.row:nth-child(2)')
-    .find('div')
-    .find('div.grid-archive > div.row > div')
+  $('main > div.container > section.archive')
+    .find('div.grid-archive > div#grid-wrapper > div.infscroll-item')
     .each((i, el) => {
       const genres: string[] = [];
       const parent = $(el).find('article.mega-item');
