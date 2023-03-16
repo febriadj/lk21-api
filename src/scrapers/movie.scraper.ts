@@ -1,51 +1,63 @@
+import { Request } from 'express';
 import cheerio from 'cheerio';
-import { IMovies, TScraper } from '../types';
+import { AxiosResponse } from 'axios';
+import { IMovies } from '../types';
 
 /**
  * Scrape movies asynchronously
- * @param AxiosResponse
- * @param options
- * @returns {Promise.<IMovies[]>}
+ * @param {Request} ExpressRequest
+ * @param {AxiosResponse} AxiosResponse
+ * @returns {Promise.<IMovies[]>} array of movies objects
  */
-export const scrapeMovies: TScraper<IMovies[]> = async (
-  res,
-  { protocol, host }
-) => {
-  const $ = cheerio.load(res.data);
+export const scrapeMovies = async (
+  req: Request,
+  res: AxiosResponse
+): Promise<IMovies[]> => {
+  const $: cheerio.Root = cheerio.load(res.data);
   const payload: IMovies[] = [];
+  const {
+    protocol,
+    headers: { host },
+  } = req;
 
   $('main > div.container > section.archive')
     .find('div.grid-archive > div#grid-wrapper > div.infscroll-item')
     .each((i, el) => {
+      const parent: cheerio.Cheerio = $(el).find('article.mega-item');
       const genres: string[] = [];
-      const parent = $(el).find('article.mega-item');
 
       $(parent)
         .find('footer')
         .find('div.grid-categories > a')
         .each((i, el2) => {
-          const href: string[] =
-            $(el2).attr('href')?.substring(1).split('/') ?? [];
+          const x: string[] = $(el2).attr('href')?.split('/') ?? [];
 
-          if (href.length > 0 && href[0] === 'genre') {
-            genres.push(href[1]);
+          if (x.length > 0 && x[1] === 'genre') {
+            genres.push(x[2]);
           }
         });
 
-      const _id: string =
+      const movieId: string =
         $(parent).find('figure > a').attr('href')?.split('/').reverse()[1] ??
         '';
 
-      payload.push({
-        _id,
-        title: $(parent).find('figure > a > img').attr('alt') ?? '',
-        posterImg: `https:${$(parent).find('figure > a > img').attr('src')}`,
-        url: `${protocol}://${host}/movies/${_id}`,
-        genres,
-        type: 'movie',
-        qualityResolution: $(parent).find('figure').find('div.quality').text(),
-        rating: $(parent).find('figure').find('div.rating').text(),
-      });
+      const obj = {} as IMovies;
+
+      obj['_id'] = movieId;
+      obj['title'] = $(parent).find('figure > a > img').attr('alt') ?? '';
+      obj['posterImg'] = `https:${$(parent)
+        .find('figure > a > img')
+        .attr('src')}`;
+      obj['url'] = `${protocol}://${host}/movies/${movieId}`;
+      obj['genres'] = genres;
+      obj['type'] = 'movie';
+      obj['qualityResolution'] = $(parent)
+        .find('figure')
+        .find('div.quality')
+        .text();
+      obj['rating'] = $(parent).find('figure').find('div.rating').text();
+
+      payload.push(obj);
     });
 
   return payload;

@@ -12,24 +12,19 @@ type TController = (req: Request, res: Response, next?: Next) => Promise<void>;
  */
 export const latestMovies: TController = async (req, res) => {
   try {
-    const {
-      headers: { host },
-      query: { page },
-      protocol,
-    } = req;
+    const { page } = req.query;
 
     const axiosRequest = await axios.get(
       `${process.env.LK21_URL}/latest${Number(page) > 1 ? `/page/${page}` : ''}`
     );
 
-    // scrape movies
-    const payload = await scrapeMovies(axiosRequest, { protocol, host });
+    const payload = await scrapeMovies(req, axiosRequest);
 
     res.status(200).json(payload);
   } catch (err) {
     console.error(err);
 
-    res.status(500).json(null);
+    res.status(400).json(null);
   }
 };
 
@@ -41,11 +36,7 @@ export const latestMovies: TController = async (req, res) => {
  */
 export const popularMovies: TController = async (req, res) => {
   try {
-    const {
-      headers: { host },
-      query: { page },
-      protocol,
-    } = req;
+    const { page } = req.query;
 
     const axiosRequest = await axios.get(
       `${process.env.LK21_URL}/populer${
@@ -54,13 +45,13 @@ export const popularMovies: TController = async (req, res) => {
     );
 
     // scrape popular movies
-    const payload = await scrapeMovies(axiosRequest, { protocol, host });
+    const payload = await scrapeMovies(req, axiosRequest);
 
     res.status(200).json(payload);
   } catch (err) {
     console.error(err);
 
-    res.status(500).json(null);
+    res.status(400).json(null);
   }
 };
 
@@ -72,11 +63,7 @@ export const popularMovies: TController = async (req, res) => {
  */
 export const recentReleaseMovies: TController = async (req, res) => {
   try {
-    const {
-      headers: { host },
-      query: { page },
-      protocol,
-    } = req;
+    const { page } = req.query;
 
     const axiosRequest = await axios.get(
       `${process.env.LK21_URL}/release${
@@ -84,14 +71,13 @@ export const recentReleaseMovies: TController = async (req, res) => {
       }`
     );
 
-    // scrape popular movies
-    const payload = await scrapeMovies(axiosRequest, { protocol, host });
+    const payload = await scrapeMovies(req, axiosRequest);
 
     res.status(200).json(payload);
   } catch (err) {
     console.error(err);
 
-    res.status(500).json(null);
+    res.status(400).json(null);
   }
 };
 
@@ -103,23 +89,18 @@ export const recentReleaseMovies: TController = async (req, res) => {
  */
 export const topRatedMovies: TController = async (req, res) => {
   try {
-    const {
-      headers: { host },
-      query: { page },
-      protocol,
-    } = req;
+    const { page } = req.query;
 
     const axiosRequest = await axios.get(
       `${process.env.LK21_URL}/rating${Number(page) > 1 ? `/page/${page}` : ''}`
     );
 
-    // scrape popular movies
-    const payload = await scrapeMovies(axiosRequest, { protocol, host });
+    const payload = await scrapeMovies(req, axiosRequest);
 
     res.status(200).json(payload);
   } catch (err) {
     console.error(err);
 
-    res.status(500).json(null);
+    res.status(400).json(null);
   }
 };

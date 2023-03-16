@@ -1,5 +1,3 @@
-import { AxiosResponse } from 'axios';
-
 export interface IMovies {
   _id: string;
   title: string;
@@ -10,11 +8,3 @@ export interface IMovies {
   qualityResolution: string;
   rating: string;
 }
-
-export type TScraper<Type> = (
-  axiosResponse: AxiosResponse,
-  options: {
-    protocol: string;
-    host: string | undefined;
-  }
-) => Promise<Type>;
