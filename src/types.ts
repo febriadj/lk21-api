@@ -22,3 +22,9 @@ export interface IMovieDetails
   countries: string[];
   trailerUrl: string;
 }
+
+export interface IStreamSources {
+  provider: string;
+  url: string;
+  resolutions: string[];
+}

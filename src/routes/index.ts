@@ -1,4 +1,5 @@
 import { Router, IRouter } from 'express';
+import { streamSources } from '../controllers/stream.controller';
 import {
   latestMovies,
   movieDetails,
@@ -14,5 +15,7 @@ router.get('/popular/movies', popularMovies);
 router.get('/recent-release/movies', recentReleaseMovies);
 router.get('/top-rated/movies', topRatedMovies);
 router.get('/movies/:id', movieDetails);
+
+router.get('/movies/:id/streams', streamSources);
 
 export default router;
