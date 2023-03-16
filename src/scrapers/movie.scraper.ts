@@ -45,17 +45,17 @@ export const scrapeMovies = async (
 
       obj['_id'] = movieId;
       obj['title'] = $(parent).find('figure > a > img').attr('alt') ?? '';
+      obj['type'] = 'movie';
       obj['posterImg'] = `https:${$(parent)
         .find('figure > a > img')
         .attr('src')}`;
+      obj['rating'] = $(parent).find('figure').find('div.rating').text();
       obj['url'] = `${protocol}://${host}/movies/${movieId}`;
-      obj['genres'] = genres;
-      obj['type'] = 'movie';
       obj['qualityResolution'] = $(parent)
         .find('figure')
         .find('div.quality')
         .text();
-      obj['rating'] = $(parent).find('figure').find('div.rating').text();
+      obj['genres'] = genres;
 
       payload.push(obj);
     });
@@ -96,23 +96,23 @@ export const scrapeMovieDetails = async (
 
   obj['_id'] = originalUrl.split('/').reverse()[0];
   obj['title'] = $('div.content-poster').find('figure > img').attr('alt') ?? '';
+  obj['type'] = 'movie';
   obj['posterImg'] = `https:${$('div.content-poster')
     .find('figure > img')
     .attr('src')}`;
-  obj['type'] = 'movie';
-  obj['director'] = $('div.content').find('div:nth-child(4) > h3 > a').text();
-  obj['genres'] = ['action'];
   obj['rating'] = $('div.content')
     .find('div:nth-child(6) > h3:nth-child(2)')
     .text();
   obj['quality'] = $('div.content').find('div:nth-child(1) > h3 > a').text();
   obj['releaseDate'] = $('div.content').find('div:nth-child(7) > h3').text();
+  obj['director'] = $('div.content').find('div:nth-child(4) > h3 > a').text();
   obj['synopsis'] = $('div.content').find('blockquote').text();
   obj['duration'] = $('div.content').find('div:nth-child(12) > h3').text();
-  obj['countries'] = countries;
-  obj['casts'] = casts;
   obj['trailerUrl'] =
     $('div.action-player').find('a.fancybox').attr('href') ?? '';
+  obj['genres'] = ['action'];
+  obj['countries'] = countries;
+  obj['casts'] = casts;
 
   return obj;
 };

@@ -3,24 +3,24 @@ type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export interface IMovies {
   _id: string;
   title: string;
-  posterImg: string;
-  url: string;
-  genres: string[];
   type: 'movie' | 'series';
-  qualityResolution: string;
+  posterImg: string;
   rating: string;
+  url: string;
+  qualityResolution: string;
+  genres: string[];
 }
 
 export interface IMovieDetails
   extends Omit<IMovies, 'url' | 'qualityResolution'> {
-  synopsis: string;
-  duration: string;
-  director: string;
-  casts: string[];
   quality: string;
   releaseDate: string;
-  countries: string[];
+  director: string;
+  synopsis: string;
+  duration: string;
   trailerUrl: string;
+  countries: string[];
+  casts: string[];
 }
 
 export interface IStreamSources {
