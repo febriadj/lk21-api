@@ -78,10 +78,17 @@ export const scrapeMovieDetails = async (
   const $: cheerio.Root = cheerio.load(res.data);
   const obj = {} as IMovieDetails;
 
+  const genres: string[] = [];
   const countries: string[] = [];
   const casts: string[] = [];
 
   $('div.content').find('blockquote').find('strong').remove();
+  $('div.content')
+    .find('div:nth-child(5) > h3 > a')
+    .each((i, el) => {
+      genres.push($(el).text());
+    });
+
   $('div.content')
     .find('div:nth-child(2) > h3 > a')
     .each((i, el) => {
@@ -110,7 +117,7 @@ export const scrapeMovieDetails = async (
   obj['duration'] = $('div.content').find('div:nth-child(12) > h3').text();
   obj['trailerUrl'] =
     $('div.action-player').find('a.fancybox').attr('href') ?? '';
-  obj['genres'] = ['action'];
+  obj['genres'] = genres;
   obj['countries'] = countries;
   obj['casts'] = casts;
 
