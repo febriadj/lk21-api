@@ -1,6 +1,6 @@
 import { NextFunction as Next, Request, Response } from 'express';
 import axios from 'axios';
-import { scrapeMovies } from '../scrapers/movie.scraper';
+import { scrapeMovieDetails, scrapeMovies } from '../scrapers/movie.scraper';
 
 type TController = (req: Request, res: Response, next?: Next) => Promise<void>;
 
@@ -96,6 +96,28 @@ export const topRatedMovies: TController = async (req, res) => {
     );
 
     const payload = await scrapeMovies(req, axiosRequest);
+
+    res.status(200).json(payload);
+  } catch (err) {
+    console.error(err);
+
+    res.status(400).json(null);
+  }
+};
+
+/**
+ * Controller for `/movies/{movieId}` route
+ * @param {Request} req
+ * @param {Response} res
+ * @param {Next} next
+ */
+export const movieDetails: TController = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const axiosRequest = await axios.get(`${process.env.LK21_URL}/${id}`);
+
+    const payload = await scrapeMovieDetails(req, axiosRequest);
 
     res.status(200).json(payload);
   } catch (err) {
