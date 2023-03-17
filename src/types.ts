@@ -28,3 +28,8 @@ export interface IStreamSources {
   url: string;
   resolutions: string[];
 }
+
+export interface ISetOfGenres {
+  name: string;
+  numberOfContents: number;
+}
