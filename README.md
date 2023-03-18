@@ -1,5 +1,7 @@
 # LK21 API
 
+![cover-banner](docs/img/cover-banner.jpg)
+
 Unofficial LK21 (LayarKaca21) and NontonDrama APIs for streaming movies, animations, and series with Indonesian subtitles. LK21 API is perfect for improving your coding skills or just having fun exploring films from around the world. Best of all, you can enjoy this API without any financial commitment!
 
 ## Table of Contents
