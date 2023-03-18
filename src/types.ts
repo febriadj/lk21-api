@@ -1,4 +1,4 @@
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 export interface IMovies {
   _id: string;
@@ -30,6 +30,8 @@ export interface IStreamSources {
 }
 
 export interface ISetOfGenres {
+  parameter: string;
   name: string;
   numberOfContents: number;
+  url: string;
 }
