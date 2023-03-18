@@ -75,6 +75,8 @@ ND_URL = https://drama2.nontondrama.lol
 | `GET /countries`         | A set of countries   |     -      |
 | `GET /years`             | A set of years       |     -      |
 
+See more LK21 API [endpoints](/docs/endpoints.md).
+
 ### Pagination
 
 Some endpoints support a way of paging the dataset, taking a `page` as query parameters:
