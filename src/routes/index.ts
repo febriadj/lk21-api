@@ -25,7 +25,7 @@ router.get('/movies/:id', movieDetails);
 router.get('/movies/:id/streams', streamSources);
 
 router.get('/genres', setOfGenres);
-router.get('/genres/:genreName', moviesByGenre);
+router.get('/genres/:genre', moviesByGenre);
 
 router.get('/countries', setOfCountries);
 router.get('/countries/:country', moviesByCountry);

@@ -26,17 +26,17 @@ export const setOfGenres: TController = async (req, res) => {
 };
 
 /**
- * Controller for `/genres/{genreName}` route
+ * Controller for `/genres/{genre}` route
  * @param {Request} req
  * @param {Response} res
  * @param {Next} next
  */
 export const moviesByGenre: TController = async (req, res) => {
   try {
-    const { genreName } = req.params;
+    const { genre } = req.params;
 
     const axiosRequest = await axios.get(
-      `${process.env.LK21_URL}/genre/${genreName.toLowerCase()}`
+      `${process.env.LK21_URL}/genre/${genre.toLowerCase()}`
     );
 
     const payload = await scrapeMovies(req, axiosRequest);
