@@ -34,9 +34,12 @@ export const setOfGenres: TController = async (req, res) => {
 export const moviesByGenre: TController = async (req, res) => {
   try {
     const { genre } = req.params;
+    const { page } = req.query;
 
     const axiosRequest = await axios.get(
-      `${process.env.LK21_URL}/genre/${genre.toLowerCase()}`
+      `${process.env.LK21_URL}/genre/${genre.toLowerCase()}${
+        Number(page) > 1 ? `/page/${page}` : ''
+      }`
     );
 
     const payload = await scrapeMovies(req, axiosRequest);
