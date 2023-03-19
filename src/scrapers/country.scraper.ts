@@ -1,9 +1,8 @@
-import path from 'path';
-import fs from 'fs';
 import cheerio from 'cheerio';
 import { AxiosResponse } from 'axios';
 import { Request } from 'express';
 import { ISetOfCountries } from '../types';
+import countries from '../json/countries.json';
 
 /**
  * Scrape a set of countries asynchronously
@@ -21,10 +20,6 @@ export const scrapeSetOfCountries = async (
     protocol,
     headers: { host },
   } = req;
-
-  const json = path.join(__dirname, '../json/countries.json');
-  const countries: Omit<ISetOfCountries, 'url' | 'numberOfContents'>[] =
-    JSON.parse(fs.readFileSync(json, 'utf8'));
 
   $('select#country > option').each((i, el) => {
     const target: string[] = $(el).text().split(' ').reverse();

@@ -1,9 +1,8 @@
-import path from 'node:path';
-import fs from 'node:fs';
 import cheerio from 'cheerio';
 import { AxiosResponse } from 'axios';
 import { Request } from 'express';
 import { ISetOfGenres } from '../types';
+import genres from '../json/genres.json';
 
 /**
  * Scrape a set of genres asynchronously
@@ -21,9 +20,6 @@ export const scrapeSetOfGenres = async (
     headers: { host },
     protocol,
   } = req;
-
-  const json = path.join(__dirname, '../json/genres.json');
-  const genres: string[] = JSON.parse(fs.readFileSync(json, 'utf8'));
 
   $('form.form-filter')
     .find('div:nth-child(5) > select.form-control > option')
