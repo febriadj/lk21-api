@@ -26,15 +26,15 @@ export const setOfGenres: TController = async (req, res) => {
 };
 
 /**
- * Controller for `/genres/{genre}` route
+ * Controller for `/genres/:genre` route
  * @param {Request} req
  * @param {Response} res
  * @param {Next} next
  */
 export const moviesByGenre: TController = async (req, res) => {
   try {
+    const { page = 0 } = req.query;
     const { genre } = req.params;
-    const { page } = req.query;
 
     const axiosRequest = await axios.get(
       `${process.env.LK21_URL}/genre/${genre.toLowerCase()}${

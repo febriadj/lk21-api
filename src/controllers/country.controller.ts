@@ -35,8 +35,8 @@ export const setOfCountries: TController = async (req, res) => {
  */
 export const moviesByCountry: TController = async (req, res) => {
   try {
+    const { page = 0 } = req.query;
     const { country } = req.params;
-    const { page } = req.query;
 
     const axiosRequest = await axios.get(
       `${process.env.LK21_URL}/country/${country.toLowerCase()}${

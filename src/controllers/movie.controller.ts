@@ -12,7 +12,7 @@ type TController = (req: Request, res: Response, next?: Next) => Promise<void>;
  */
 export const latestMovies: TController = async (req, res) => {
   try {
-    const { page } = req.query;
+    const { page = 0 } = req.query;
 
     const axiosRequest = await axios.get(
       `${process.env.LK21_URL}/latest${Number(page) > 1 ? `/page/${page}` : ''}`
@@ -36,7 +36,7 @@ export const latestMovies: TController = async (req, res) => {
  */
 export const popularMovies: TController = async (req, res) => {
   try {
-    const { page } = req.query;
+    const { page = 0 } = req.query;
 
     const axiosRequest = await axios.get(
       `${process.env.LK21_URL}/populer${
@@ -63,7 +63,7 @@ export const popularMovies: TController = async (req, res) => {
  */
 export const recentReleaseMovies: TController = async (req, res) => {
   try {
-    const { page } = req.query;
+    const { page = 0 } = req.query;
 
     const axiosRequest = await axios.get(
       `${process.env.LK21_URL}/release${
@@ -89,7 +89,7 @@ export const recentReleaseMovies: TController = async (req, res) => {
  */
 export const topRatedMovies: TController = async (req, res) => {
   try {
-    const { page } = req.query;
+    const { page = 0 } = req.query;
 
     const axiosRequest = await axios.get(
       `${process.env.LK21_URL}/rating${Number(page) > 1 ? `/page/${page}` : ''}`

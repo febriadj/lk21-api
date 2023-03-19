@@ -35,8 +35,8 @@ export const setOfYears: TController = async (req, res) => {
  */
 export const moviesByYear: TController = async (req, res) => {
   try {
+    const { page = 0 } = req.query;
     const { year } = req.params;
-    const { page } = req.query;
 
     const axiosRequest = await axios.get(
       `${process.env.LK21_URL}/year/${year}${
