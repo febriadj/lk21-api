@@ -1,7 +1,7 @@
 import { Router, IRouter } from 'express';
 import { streamSources } from '../controllers/stream.controller';
 import { moviesByGenre, setOfGenres } from '../controllers/genre.controller';
-import { setOfYears } from '../controllers/year.controller';
+import { moviesByYear, setOfYears } from '../controllers/year.controller';
 import {
   moviesByCountry,
   setOfCountries,
@@ -32,5 +32,6 @@ router.get('/countries', setOfCountries);
 router.get('/countries/:country', moviesByCountry);
 
 router.get('/years', setOfYears);
+router.get('/years/:year', moviesByYear);
 
 export default router;

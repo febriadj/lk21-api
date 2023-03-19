@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { NextFunction as Next, Request, Response } from 'express';
+import { scrapeMovies } from '../scrapers/movie.scraper';
 import { scrapeSetOfYears } from '../scrapers/year.scraper';
 
 type TController = (req: Request, res: Response, next?: Next) => Promise<void>;
@@ -17,6 +18,33 @@ export const setOfYears: TController = async (req, res) => {
     );
 
     const payload = await scrapeSetOfYears(req, axiosRequest);
+
+    res.status(200).json(payload);
+  } catch (err) {
+    console.error(err);
+
+    res.status(400).json(null);
+  }
+};
+
+/**
+ * Controller for `/years/:year` route
+ * @param {Request} req
+ * @param {Response} res
+ * @param {Next} next
+ */
+export const moviesByYear: TController = async (req, res) => {
+  try {
+    const { year } = req.params;
+    const { page } = req.query;
+
+    const axiosRequest = await axios.get(
+      `${process.env.LK21_URL}/year/${year}${
+        Number(page) > 1 ? `/page/${page}` : ''
+      }`
+    );
+
+    const payload = await scrapeMovies(req, axiosRequest);
 
     res.status(200).json(payload);
   } catch (err) {
