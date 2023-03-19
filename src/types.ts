@@ -42,3 +42,9 @@ export interface ISetOfCountries {
   numberOfContents: number;
   url: string;
 }
+
+export interface ISetOfYears {
+  parameter: string;
+  numberOfContents: number;
+  url: string;
+}
