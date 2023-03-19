@@ -1,5 +1,7 @@
-import { AxiosResponse } from 'axios';
+import path from 'node:path';
+import fs from 'node:fs';
 import cheerio from 'cheerio';
+import { AxiosResponse } from 'axios';
 import { Request } from 'express';
 import { ISetOfGenres } from '../types';
 
@@ -13,35 +15,15 @@ export const scrapeSetOfGenres = async (
   req: Request,
   res: AxiosResponse
 ): Promise<ISetOfGenres[]> => {
-  const genres: string[] = [
-    'action',
-    'adventure',
-    'animation',
-    'biography',
-    'comedy',
-    'crime',
-    'documentary',
-    'drama',
-    'family',
-    'fantasy',
-    'history',
-    'horror',
-    'music',
-    'mystery',
-    'romance',
-    'school',
-    'sci-fi',
-    'sport',
-    'thriller',
-    'war',
-  ];
-
   const $: cheerio.Root = cheerio.load(res.data);
   const payload: ISetOfGenres[] = [];
   const {
     headers: { host },
     protocol,
   } = req;
+
+  const json = path.join(__dirname, '../json/genres.json');
+  const genres: string[] = JSON.parse(fs.readFileSync(json, 'utf8'));
 
   $('form.form-filter')
     .find('div:nth-child(5) > select.form-control > option')
