@@ -1,0 +1,310 @@
+[
+  {
+    "parameter": "algeria",
+    "name": "Algeria"
+  },
+  {
+    "parameter": "argentina",
+    "name": "Argentina"
+  },
+  {
+    "parameter": "australia",
+    "name": "Australia"
+  },
+  {
+    "parameter": "austria",
+    "name": "austria"
+  },
+  {
+    "parameter": "bangladesh",
+    "name": "Bangladesh"
+  },
+  {
+    "parameter": "belgium",
+    "name": "Belgium"
+  },
+  {
+    "parameter": "bosnia-and-herzegovina",
+    "name": "Bosnia and Herzegovina"
+  },
+  {
+    "parameter": "brazil",
+    "name": "Brazil"
+  },
+  {
+    "parameter": "bulgaria",
+    "name": "Bulgaria"
+  },
+  {
+    "parameter": "cambodia",
+    "name": "Cambodia"
+  },
+  {
+    "parameter": "canada",
+    "name": "Canada"
+  },
+  {
+    "parameter": "china",
+    "name": "China"
+  },
+  {
+    "parameter": "colombia",
+    "name": "Colombia"
+  },
+  {
+    "parameter": "cyprus",
+    "name": "Cyprus"
+  },
+  {
+    "parameter": "czech-republic",
+    "name": "Czech Republic"
+  },
+  {
+    "parameter": "denmark",
+    "name": "Denmark"
+  },
+  {
+    "parameter": "dominican-republic",
+    "name": "Dominican Republic"
+  },
+  {
+    "parameter": "egypt",
+    "name": "Egypt"
+  },
+  {
+    "parameter": "estonia",
+    "name": "Estonia"
+  },
+  {
+    "parameter": "finland",
+    "name": "Finland"
+  },
+  {
+    "parameter": "france",
+    "name": "France"
+  },
+  {
+    "parameter": "georgia",
+    "name": "Georgia"
+  },
+  {
+    "parameter": "germany",
+    "name": "Germany"
+  },
+  {
+    "parameter": "greece",
+    "name": "Greece"
+  },
+  {
+    "parameter": "hong-kong",
+    "name": "Hong kong"
+  },
+  {
+    "parameter": "iceland",
+    "name": "Iceland"
+  },
+  {
+    "parameter": "india",
+    "name": "India"
+  },
+  {
+    "parameter": "iran",
+    "name": "Iran"
+  },
+  {
+    "parameter": "ireland",
+    "name": "Ireland"
+  },
+  {
+    "parameter": "israel",
+    "name": "Israel"
+  },
+  {
+    "parameter": "italy",
+    "name": "Italy"
+  },
+  {
+    "parameter": "japan",
+    "name": "Japan"
+  },
+  {
+    "parameter": "kazakhstan",
+    "name": "Kazakhstan"
+  },
+  {
+    "parameter": "kenya",
+    "name": "Kenya"
+  },
+  {
+    "parameter": "latvia",
+    "name": "Latvia"
+  },
+  {
+    "parameter": "lebanon",
+    "name": "Lebanon"
+  },
+  {
+    "parameter": "luxembourg",
+    "name": "Luxembourg"
+  },
+  {
+    "parameter": "malaysia",
+    "name": "Malaysia"
+  },
+  {
+    "parameter": "mexico",
+    "name": "Mexico"
+  },
+  {
+    "parameter": "morocco",
+    "name": "Morocco"
+  },
+  {
+    "parameter": "nepal",
+    "name": "Nepal"
+  },
+  {
+    "parameter": "netherlands",
+    "name": "Netherlands"
+  },
+  {
+    "parameter": "new-zealand",
+    "name": "New Zealand"
+  },
+  {
+    "parameter": "nigeria",
+    "name": "Nigeria"
+  },
+  {
+    "parameter": "norway",
+    "name": "Norway"
+  },
+  {
+    "parameter": "pakistan",
+    "name": "Pakistan"
+  },
+  {
+    "parameter": "panama",
+    "name": "Panama"
+  },
+  {
+    "parameter": "paraguay",
+    "name": "Paraguay"
+  },
+  {
+    "parameter": "peru",
+    "name": "Peru"
+  },
+  {
+    "parameter": "philippines",
+    "name": "Philippines"
+  },
+  {
+    "parameter": "poland",
+    "name": "Poland"
+  },
+  {
+    "parameter": "portugal",
+    "name": "Portugal"
+  },
+  {
+    "parameter": "puerto-rico",
+    "name": "Puerto Rico"
+  },
+  {
+    "parameter": "qatar",
+    "name": "Qatar"
+  },
+  {
+    "parameter": "romania",
+    "name": "Romania"
+  },
+  {
+    "parameter": "russia",
+    "name": "Russia"
+  },
+  {
+    "parameter": "saudi-arabia",
+    "name": "Saudi Arabia"
+  },
+  {
+    "parameter": "serbia",
+    "name": "Serbia"
+  },
+  {
+    "parameter": "singapore",
+    "name": "Singapore"
+  },
+  {
+    "parameter": "slovakia",
+    "name": "Slovakia"
+  },
+  {
+    "parameter": "slovenia",
+    "name": "Slovenia"
+  },
+  {
+    "parameter": "south-africa",
+    "name": "South Africa"
+  },
+  {
+    "parameter": "south-korea",
+    "name": "South Korea"
+  },
+  {
+    "parameter": "spain",
+    "name": "Spain"
+  },
+  {
+    "parameter": "sweden",
+    "name": "Sweden"
+  },
+  {
+    "parameter": "switzerland",
+    "name": "Switzerland"
+  },
+  {
+    "parameter": "taiwan",
+    "name": "Taiwan"
+  },
+  {
+    "parameter": "thailand",
+    "name": "Thailand"
+  },
+  {
+    "parameter": "tunisia",
+    "name": "Tunisia"
+  },
+  {
+    "parameter": "turkey",
+    "name": "Turkey"
+  },
+  {
+    "parameter": "uk",
+    "name": "United Kingdom"
+  },
+  {
+    "parameter": "ukraine",
+    "name": "Ukraine"
+  },
+  {
+    "parameter": "united-arab-emirates",
+    "name": "United Arab Emirates"
+  },
+  {
+    "parameter": "uruguay",
+    "name": "Uruguay"
+  },
+  {
+    "parameter": "usa",
+    "name": "United States"
+  },
+  {
+    "parameter": "venezuela",
+    "name": "Venezuela"
+  },
+  {
+    "parameter": "vietnam",
+    "name": "Vietnam"
+  }
+]

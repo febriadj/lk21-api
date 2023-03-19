@@ -35,3 +35,10 @@ export interface ISetOfGenres {
   numberOfContents: number;
   url: string;
 }
+
+export interface ISetOfCountries {
+  parameter: string;
+  name: string;
+  numberOfContents: number;
+  url: string;
+}

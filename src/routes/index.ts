@@ -1,6 +1,7 @@
 import { Router, IRouter } from 'express';
 import { streamSources } from '../controllers/stream.controller';
 import { moviesByGenre, setOfGenres } from '../controllers/genre.controller';
+import { setOfCountries } from '../controllers/country.controller';
 import {
   latestMovies,
   movieDetails,
@@ -21,5 +22,7 @@ router.get('/movies/:id/streams', streamSources);
 
 router.get('/genres', setOfGenres);
 router.get('/genres/:genreName', moviesByGenre);
+
+router.get('/countries', setOfCountries);
 
 export default router;
