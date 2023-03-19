@@ -9,7 +9,7 @@ import { ISetOfGenres } from '../types';
  * Scrape a set of genres asynchronously
  * @param {Request} ExpressRequest
  * @param {AxiosResponse} AxiosResponse
- * @returns {Promise.<IMovies[]>} a set of genres
+ * @returns {Promise.<ISetOfGenres[]>} a set of genres
  */
 export const scrapeSetOfGenres = async (
   req: Request,
