@@ -15,7 +15,7 @@ import {
   topRatedMovies,
 } from '../controllers/movie.controller';
 
-import { latestSeries } from '../controllers/series.controller';
+import { latestSeries, popularSeries } from '../controllers/series.controller';
 
 const router: IRouter = Router();
 
@@ -37,5 +37,6 @@ router.get('/years', setOfYears);
 router.get('/years/:year', moviesByYear);
 
 router.get('/series', latestSeries);
+router.get('/popular/series', popularSeries);
 
 export default router;
