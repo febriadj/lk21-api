@@ -48,3 +48,7 @@ export interface ISetOfYears {
   numberOfContents: number;
   url: string;
 }
+
+export interface ISeries extends Omit<IMovies, 'qualityResolution'> {
+  episode: number;
+}
