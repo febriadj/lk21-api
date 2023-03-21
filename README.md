@@ -56,7 +56,7 @@ The target URLs have the potential to change at any time because their servers a
 LK21_URL = https://tv.lk21official.live
 
 # NontonDrama URL
-ND_URL = https://drama2.nontondrama.lol
+ND_URL = https://tv.nontondrama.lol
 ```
 
 ## Reference
