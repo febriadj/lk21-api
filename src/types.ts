@@ -52,3 +52,20 @@ export interface ISetOfYears {
 export interface ISeries extends Omit<IMovies, 'qualityResolution'> {
   episode: number;
 }
+
+export interface ISeasonsList {
+  season: number;
+  totalEpisodes: number;
+}
+
+export interface ISeriesDetails extends Omit<ISeries, 'url'> {
+  status: string;
+  releaseDate: string;
+  director: string;
+  synopsis: string;
+  duration: string;
+  trailerUrl: string;
+  countries: string[];
+  casts: string[];
+  seasons: ISeasonsList[];
+}

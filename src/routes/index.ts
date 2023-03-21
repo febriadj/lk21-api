@@ -19,6 +19,7 @@ import {
   latestSeries,
   popularSeries,
   recentReleaseSeries,
+  seriesDetails,
   topRatedSeries,
 } from '../controllers/series.controller';
 
@@ -45,5 +46,6 @@ router.get('/series', latestSeries);
 router.get('/popular/series', popularSeries);
 router.get('/recent-release/series', recentReleaseSeries);
 router.get('/top-rated/series', topRatedSeries);
+router.get('/series/:id', seriesDetails);
 
 export default router;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { NextFunction as Next, Request, Response } from 'express';
-import { scrapeSeries } from '../scrapers/series.scraper';
+import { scrapeSeries, scrapeSeriesDetails } from '../scrapers/series.scraper';
 
 type TController = (req: Request, res: Response, next?: Next) => Promise<void>;
 
@@ -91,6 +91,28 @@ export const topRatedSeries: TController = async (req, res) => {
     );
 
     const payload = await scrapeSeries(req, axiosRequest);
+
+    res.status(200).json(payload);
+  } catch (err) {
+    console.error(err);
+
+    res.status(400).json(null);
+  }
+};
+
+/**
+ * Controller for `/series/:seriesId` route
+ * @param {Request} req
+ * @param {Response} res
+ * @param {Next} next
+ */
+export const seriesDetails: TController = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const axiosRequest = await axios.get(`${process.env.ND_URL}/${id}`);
+
+    const payload = await scrapeSeriesDetails(req, axiosRequest);
 
     res.status(200).json(payload);
   } catch (err) {

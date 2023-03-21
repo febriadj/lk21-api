@@ -1,7 +1,7 @@
 import cheerio from 'cheerio';
 import { AxiosResponse } from 'axios';
 import { Request } from 'express';
-import { ISeries } from '../types';
+import { ISeasonsList, ISeries, ISeriesDetails } from '../types';
 
 /**
  * Scrape series asynchronously
@@ -62,4 +62,102 @@ export const scrapeSeries = async (
     });
 
   return payload;
+};
+
+/**
+ * Scrape series details asynchronously
+ * @param {Request} ExpressRequest
+ * @param {AxiosResponse} AxiosResponse
+ * @returns {Promise.<ISeriesDetails>} series details object
+ */
+export const scrapeSeriesDetails = async (
+  req: Request,
+  res: AxiosResponse
+): Promise<ISeriesDetails> => {
+  const { originalUrl } = req;
+
+  const $: cheerio.Root = cheerio.load(res.data);
+  const obj = {} as ISeriesDetails;
+
+  const genres: string[] = [];
+  const countries: string[] = [];
+  const casts: string[] = [];
+
+  $('div.content').find('blockquote').find('strong').remove();
+
+  obj['_id'] = originalUrl.split('/').reverse()[0];
+  obj['title'] = $('div.content-poster').find('figure > img').attr('alt') ?? '';
+  obj['type'] = 'series';
+  obj['posterImg'] = `https:${$('div.content-poster')
+    .find('figure > img')
+    .attr('src')}`;
+
+  $('div.content > div').each((i, el) => {
+    /* eslint-disable */
+    switch ($(el).find('h2').text().toLowerCase()) {
+      case 'sutradara':
+        obj['director'] = $(el).find('h3 > a').text().trim();
+        break;
+      case 'durasi':
+        obj['duration'] = $(el).find('h3').text().trim();
+        break;
+      case 'imdb':
+        obj['rating'] = $(el).find('h3:nth-child(2)').text().trim();
+        break;
+      case 'diterbitkan':
+        obj['releaseDate'] = $(el).find('h3').text().trim();
+        break;
+      case 'status':
+        obj['status'] = $(el).find('h3 > span').text().toLowerCase().trim();
+        break;
+      case 'negara':
+        $(el)
+          .find('h3 > a')
+          .each((i, el) => {
+            countries.push($(el).text());
+          });
+        break;
+      case 'genre':
+        $(el)
+          .find('h3 > a')
+          .each((i, el) => {
+            genres.push($(el).text());
+          });
+        break;
+      case 'bintang film':
+        $(el)
+          .find('h3')
+          .each((i, el) => {
+            casts.push($(el).find('a').text());
+          });
+        break;
+      default:
+        break;
+    }
+    /* eslint-enable */
+  });
+
+  obj['synopsis'] = $('div.content').find('blockquote').text();
+  obj['trailerUrl'] = `${$('div.player-content > iframe').attr('src')}`;
+  obj['genres'] = genres;
+  obj['countries'] = countries;
+  obj['casts'] = casts;
+
+  const epsElem: cheerio.Cheerio = $('div.serial-wrapper > div.episode-list');
+  const seasons: ISeasonsList[] = [];
+
+  for (let i = epsElem.length; i >= 1; i--) {
+    const obj2 = {} as ISeasonsList;
+
+    obj2['season'] = i;
+    obj2['totalEpisodes'] = $(epsElem[epsElem.length - i]).find(
+      'a.btn-primary'
+    ).length;
+
+    seasons.push(obj2);
+  }
+
+  obj['seasons'] = seasons;
+
+  return obj;
 };
