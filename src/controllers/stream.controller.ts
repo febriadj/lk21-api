@@ -21,3 +21,33 @@ export const streamSources: TController = async (req, res) => {
     res.status(400).json(null);
   }
 };
+
+/**
+ * Controller for `/series/:seriesId/streams` route
+ * @param {Request} req
+ * @param {Response} res
+ * @param {Next} next
+ */
+export const streamSeries: TController = async (req, res) => {
+  try {
+    const { originalUrl } = req;
+    const { season = 1, episode = 1 } = req.query;
+
+    const _ids = originalUrl.split('/').reverse()[1].split('-');
+    const year = _ids.pop();
+
+    const seriesId = _ids.join('-');
+
+    const axiosRequest = await axios.get(
+      `${process.env.ND_URL}/${seriesId}-season-${season}-episode-${episode}-${year}`
+    );
+
+    const payload = await scrapeStreamSources(req, axiosRequest);
+
+    res.status(200).json(payload);
+  } catch (err) {
+    console.error(err);
+
+    res.status(400).json(null);
+  }
+};
