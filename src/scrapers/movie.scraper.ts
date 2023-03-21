@@ -83,23 +83,6 @@ export const scrapeMovieDetails = async (
   const casts: string[] = [];
 
   $('div.content').find('blockquote').find('strong').remove();
-  $('div.content')
-    .find('div:nth-child(5) > h3 > a')
-    .each((i, el) => {
-      genres.push($(el).text());
-    });
-
-  $('div.content')
-    .find('div:nth-child(2) > h3 > a')
-    .each((i, el) => {
-      countries.push($(el).text());
-    });
-
-  $('div.content')
-    .find('div:nth-child(3) > h3')
-    .each((i, el) => {
-      casts.push($(el).find('a').text());
-    });
 
   obj['_id'] = originalUrl.split('/').reverse()[0];
   obj['title'] = $('div.content-poster').find('figure > img').attr('alt') ?? '';
@@ -107,14 +90,53 @@ export const scrapeMovieDetails = async (
   obj['posterImg'] = `https:${$('div.content-poster')
     .find('figure > img')
     .attr('src')}`;
-  obj['rating'] = $('div.content')
-    .find('div:nth-child(6) > h3:nth-child(2)')
-    .text();
-  obj['quality'] = $('div.content').find('div:nth-child(1) > h3 > a').text();
-  obj['releaseDate'] = $('div.content').find('div:nth-child(7) > h3').text();
-  obj['director'] = $('div.content').find('div:nth-child(4) > h3 > a').text();
+
+  $('div.content > div').each((i, el) => {
+    /* eslint-disable */
+    switch ($(el).find('h2').text().toLowerCase()) {
+      case 'sutradara':
+        obj['director'] = $(el).find('h3 > a').text().trim();
+        break;
+      case 'durasi':
+        obj['duration'] = $(el).find('h3').text().trim();
+        break;
+      case 'imdb':
+        obj['rating'] = $(el).find('h3:nth-child(2)').text().trim();
+        break;
+      case 'diterbitkan':
+        obj['releaseDate'] = $(el).find('h3').text().trim();
+        break;
+      case 'kualitas':
+        obj['quality'] = $(el).find('h3 > a').text().trim();
+        break;
+      case 'negara':
+        $(el)
+          .find('h3 > a')
+          .each((i, el) => {
+            countries.push($(el).text());
+          });
+        break;
+      case 'genre':
+        $(el)
+          .find('h3 > a')
+          .each((i, el) => {
+            genres.push($(el).text());
+          });
+        break;
+      case 'bintang film':
+        $(el)
+          .find('h3')
+          .each((i, el) => {
+            casts.push($(el).find('a').text());
+          });
+        break;
+      default:
+        break;
+    }
+    /* eslint-enable */
+  });
+
   obj['synopsis'] = $('div.content').find('blockquote').text();
-  obj['duration'] = $('div.content').find('div:nth-child(12) > h3').text();
   obj['trailerUrl'] =
     $('div.action-player').find('a.fancybox').attr('href') ?? '';
   obj['genres'] = genres;
