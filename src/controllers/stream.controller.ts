@@ -4,7 +4,13 @@ import { scrapeStreamSources } from '../scrapers/stream.scraper';
 
 type TController = (req: Request, res: Response, next?: Next) => Promise<void>;
 
-export const streamSources: TController = async (req, res) => {
+/**
+ * Controller for `/movies/:movieId/streams` route
+ * @param {Request} req
+ * @param {Response} res
+ * @param {Next} next
+ */
+export const streamMovie: TController = async (req, res) => {
   try {
     const { originalUrl } = req;
 
