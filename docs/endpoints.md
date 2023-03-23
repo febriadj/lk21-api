@@ -15,6 +15,8 @@
 | `GET /recent-release/series`                        | Recent release series                                       |     √      |
 | `GET /top-rated/series`                             | Top rated series                                            |     √      |
 |                                                     |                                                             |            |
+| `GET /search/{movieOrSeriesTitle}`                  | Searched movies or series                                   |     -      |
+|                                                     |                                                             |            |
 | `GET /genres`                                       | A set of genres                                             |     -      |
 | `GET /genres/{genre}`                               | List of movies by genre                                     |     √      |
 | `GET /genres/{genre}/series`                        | List of series by genre                                     |     √      |

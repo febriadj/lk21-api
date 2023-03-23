@@ -63,19 +63,21 @@ ND_URL = https://tv.nontondrama.lol
 
 ### List of Endpoints
 
-| Request                  | Response             | Pagination |
-| :----------------------- | :------------------- | :--------: |
-| `GET /movies`            | Recent upload movies |     √      |
-| `GET /movies/{movieId}`  | The movie details    |     -      |
-| `GET /popular/movies`    | Popular movies       |     √      |
-|                          |                      |            |
-| `GET /series`            | Recent upload series |     √      |
-| `GET /series/{seriesId}` | The series details   |     -      |
-| `GET /popular/series`    | Popular series       |     √      |
-|                          |                      |            |
-| `GET /genres`            | A set of genres      |     -      |
-| `GET /countries`         | A set of countries   |     -      |
-| `GET /years`             | A set of years       |     -      |
+| Request                            | Response                  | Pagination |
+| :--------------------------------- | :------------------------ | :--------: |
+| `GET /movies`                      | Recent upload movies      |     √      |
+| `GET /movies/{movieId}`            | The movie details         |     -      |
+| `GET /popular/movies`              | Popular movies            |     √      |
+|                                    |                           |            |
+| `GET /series`                      | Recent upload series      |     √      |
+| `GET /series/{seriesId}`           | The series details        |     -      |
+| `GET /popular/series`              | Popular series            |     √      |
+|                                    |                           |            |
+| `GET /search/{movieOrSeriesTitle}` | Searched movies or series |     -      |
+|                                    |                           |            |
+| `GET /genres`                      | A set of genres           |     -      |
+| `GET /countries`                   | A set of countries        |     -      |
+| `GET /years`                       | A set of years            |     -      |
 
 See more LK21 API [endpoints](/docs/endpoints.md).
 
