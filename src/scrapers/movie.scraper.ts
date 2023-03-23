@@ -79,6 +79,7 @@ export const scrapeMovieDetails = async (
   const obj = {} as IMovieDetails;
 
   const genres: string[] = [];
+  const directors: string[] = [];
   const countries: string[] = [];
   const casts: string[] = [];
 
@@ -94,9 +95,6 @@ export const scrapeMovieDetails = async (
   $('div.content > div').each((i, el) => {
     /* eslint-disable */
     switch ($(el).find('h2').text().toLowerCase()) {
-      case 'sutradara':
-        obj['director'] = $(el).find('h3 > a').text().trim();
-        break;
       case 'durasi':
         obj['duration'] = $(el).find('h3').text().trim();
         break;
@@ -108,6 +106,13 @@ export const scrapeMovieDetails = async (
         break;
       case 'kualitas':
         obj['quality'] = $(el).find('h3 > a').text().trim();
+        break;
+      case 'sutradara':
+        $(el)
+          .find('h3 > a')
+          .each((i, el) => {
+            directors.push($(el).text().trim());
+          });
         break;
       case 'negara':
         $(el)
@@ -140,6 +145,7 @@ export const scrapeMovieDetails = async (
   obj['trailerUrl'] =
     $('div.action-player').find('a.fancybox').attr('href') ?? '';
   obj['genres'] = genres;
+  obj['directors'] = directors;
   obj['countries'] = countries;
   obj['casts'] = casts;
 

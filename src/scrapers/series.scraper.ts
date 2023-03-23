@@ -80,6 +80,7 @@ export const scrapeSeriesDetails = async (
   const obj = {} as ISeriesDetails;
 
   const genres: string[] = [];
+  const directors: string[] = [];
   const countries: string[] = [];
   const casts: string[] = [];
 
@@ -95,9 +96,6 @@ export const scrapeSeriesDetails = async (
   $('div.content > div').each((i, el) => {
     /* eslint-disable */
     switch ($(el).find('h2').text().toLowerCase()) {
-      case 'sutradara':
-        obj['director'] = $(el).find('h3 > a').text().trim();
-        break;
       case 'durasi':
         obj['duration'] = $(el).find('h3').text().trim();
         break;
@@ -109,6 +107,13 @@ export const scrapeSeriesDetails = async (
         break;
       case 'status':
         obj['status'] = $(el).find('h3 > span').text().toLowerCase().trim();
+        break;
+      case 'sutradara':
+        $(el)
+          .find('h3 > a')
+          .each((i, el) => {
+            directors.push($(el).text().trim());
+          });
         break;
       case 'negara':
         $(el)
@@ -140,6 +145,7 @@ export const scrapeSeriesDetails = async (
   obj['synopsis'] = $('div.content').find('blockquote').text();
   obj['trailerUrl'] = `${$('div.player-content > iframe').attr('src')}`;
   obj['genres'] = genres;
+  obj['directors'] = directors;
   obj['countries'] = countries;
   obj['casts'] = casts;
 

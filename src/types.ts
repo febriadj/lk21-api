@@ -15,10 +15,10 @@ export interface IMovieDetails
   extends Omit<IMovies, 'url' | 'qualityResolution'> {
   quality: string;
   releaseDate: string;
-  director: string;
   synopsis: string;
   duration: string;
   trailerUrl: string;
+  directors: string[];
   countries: string[];
   casts: string[];
 }
@@ -61,10 +61,10 @@ export interface ISeasonsList {
 export interface ISeriesDetails extends Omit<ISeries, 'url'> {
   status: string;
   releaseDate: string;
-  director: string;
   synopsis: string;
   duration: string;
   trailerUrl: string;
+  directors: string[];
   countries: string[];
   casts: string[];
   seasons: ISeasonsList[];
@@ -77,6 +77,6 @@ export interface ISearchedMoviesOrSeries {
   posterImg: string;
   url: string;
   genres: string[];
-  director: string;
+  directors: string[];
   casts: string[];
 }

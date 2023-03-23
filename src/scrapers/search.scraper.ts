@@ -53,7 +53,7 @@ export const scrapeSearchedMoviesOrSeries = async (
         switch ($(el2).find('strong').text().toLowerCase()) {
           case 'sutradara:':
             $(el2).find('strong').remove();
-            obj['director'] = $(el2).text().trim();
+            obj['directors'] = $(el2).text().trim().split(', ');
             break;
           case 'bintang:':
             $(el2).find('strong').remove();
