@@ -2,6 +2,7 @@ import { Router, IRouter } from 'express';
 import { streamSeries, streamMovie } from '../controllers/stream.controller';
 import { moviesByGenre, setOfGenres } from '../controllers/genre.controller';
 import { moviesByYear, setOfYears } from '../controllers/year.controller';
+import { searchedMoviesOrSeries } from '../controllers/search.controller';
 import {
   moviesByCountry,
   setOfCountries,
@@ -49,5 +50,7 @@ router.get('/top-rated/series', topRatedSeries);
 router.get('/series/:id', seriesDetails);
 
 router.get('/series/:id/streams', streamSeries);
+
+router.get('/search/:title', searchedMoviesOrSeries);
 
 export default router;

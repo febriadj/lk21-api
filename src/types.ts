@@ -69,3 +69,14 @@ export interface ISeriesDetails extends Omit<ISeries, 'url'> {
   casts: string[];
   seasons: ISeasonsList[];
 }
+
+export interface ISearchedMoviesOrSeries {
+  _id: string;
+  title: string;
+  type: 'movie' | 'series';
+  posterImg: string;
+  url: string;
+  genres: string[];
+  director: string;
+  casts: string[];
+}
