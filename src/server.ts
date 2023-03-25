@@ -13,7 +13,7 @@ const app: Application = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(morgan('tiny'));
-app.use(cors());
+app.use(cors({ origin: '*' }));
 
 app.use(routes);
 
