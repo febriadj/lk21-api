@@ -107,7 +107,16 @@ NO, it's unofficial LK21 API, I fetch their movies by web scraping with Node.js,
 
 <details>
   <summary><strong>What is NontonDrama?</strong></summary>
+
 NontonDrama is another source used by LK21 to serve movie series with updated episodes.
+
+</details>
+
+<details>
+  <summary><strong>Streaming URLs is blocked and not working</strong></summary>
+
+To display the movie streaming sources in the `<iframe>` you need to run your application on HTTPS. For security reasons, LK21 prohibits loading of the resources in the `<iframe>` outside of their domain.
+
 </details>
 
 ## Showcase
