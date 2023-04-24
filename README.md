@@ -2,7 +2,7 @@
 
 ![cover-banner](docs/img/cover-banner.jpg)
 
-Unofficial LK21 (LayarKaca21) and NontonDrama APIs for streaming movies, animations, and series with Indonesian subtitles. LK21 API is perfect for improving your coding skills or just having fun exploring films from around the world. Best of all, you can enjoy this API without any financial commitment!
+Unofficial LK21 (LayarKaca21) and NontonDrama APIs for streaming movies, animations, and series with Indonesian subtitles. LK21 API is perfect for improving your coding skills or just having fun exploring movies from around the world. Best of all, you can enjoy this API without any financial commitment!
 
 ## Table of Contents
 
@@ -12,7 +12,7 @@ Unofficial LK21 (LayarKaca21) and NontonDrama APIs for streaming movies, animati
 - [Reference](#reference)
   - [List of Endpoints](#list-of-endpoints)
   - [Pagination](#pagination)
-- [FAQs](#faqs)
+- [FAQ](#faq)
 - [Showcase](#showcase)
 - [License](#license)
 - [Disclamer](#disclamer)
@@ -89,19 +89,19 @@ Some endpoints support a way of paging the dataset, taking a `page` as query par
 GET /popular/movies?page=5
 ```
 
-## FAQs
+## FAQ
 
 <details>
   <summary><strong>What is LK21?</strong></summary>
 
-LK21 (LayarKaca21) is a large-scale Indonesian streaming service that offers you to watch movies, animations, and series with Indonesian subtitles. This is a popular #1 streaming service in Indonesia because LK21 serves thousands of films from around the world such as the US, Japan, Korea, and more for free.
+LK21 (LayarKaca21) is a large-scale Indonesian streaming service that offers you to watch movies, animations, and series with Indonesian subtitles. This is a popular #1 streaming service in Indonesia because LK21 serves thousands of movies from around the world such as the US, Japan, Korea, and more for free.
 
 </details>
 
 <details>
   <summary><strong>Is this the Official LK21 API?</strong></summary>
 
-NO, it's unofficial LK21 API, I fetch their films by web scraping with Node.js, [@axios](https://www.npmjs.com/package/axios), and [@cheerio](https://www.npmjs.com/package/cheerio).
+NO, it's unofficial LK21 API, I fetch their movies by web scraping with Node.js, [@axios](https://www.npmjs.com/package/axios), and [@cheerio](https://www.npmjs.com/package/cheerio).
 
 </details>
 
@@ -124,6 +124,6 @@ Distributed under the [MIT License](/LICENSE).
 
 ## Disclamer
 
-The films contained in this API are obtained from the original LK21 and NontonDrama websites by web scraping. Developers using this API must follow the applicable regulations by mentioning this project or the official owner in their projects and are prohibited from abusing this API for personal benefits.
+The movies contained in this API are obtained from the original LK21 and NontonDrama websites by web scraping. Developers using this API must follow the applicable regulations by mentioning this project or the official owner in their projects and are prohibited from abusing this API for personal benefits.
 
 [(Back to Top)](#lk21-api)
