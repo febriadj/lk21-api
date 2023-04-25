@@ -1,12 +1,9 @@
 import { Router, IRouter } from 'express';
-import { streamSeries, streamMovie } from '../controllers/stream.controller';
-import { moviesByGenre, setOfGenres } from '../controllers/genre.controller';
-import { moviesByYear, setOfYears } from '../controllers/year.controller';
-import { searchedMoviesOrSeries } from '../controllers/search.controller';
-import {
-  moviesByCountry,
-  setOfCountries,
-} from '../controllers/country.controller';
+import { streamSeries, streamMovie } from '../controllers/stream';
+import { moviesByGenre, setOfGenres } from '../controllers/genre';
+import { moviesByYear, setOfYears } from '../controllers/year';
+import { searchedMoviesOrSeries } from '../controllers/search';
+import { moviesByCountry, setOfCountries } from '../controllers/country';
 
 import {
   latestMovies,
@@ -14,7 +11,7 @@ import {
   popularMovies,
   recentReleaseMovies,
   topRatedMovies,
-} from '../controllers/movie.controller';
+} from '../controllers/movie';
 
 import {
   latestSeries,
@@ -22,7 +19,7 @@ import {
   recentReleaseSeries,
   seriesDetails,
   topRatedSeries,
-} from '../controllers/series.controller';
+} from '../controllers/series';
 
 const router: IRouter = Router();
 

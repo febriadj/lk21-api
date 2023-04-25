@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { NextFunction as Next, Request, Response } from 'express';
-import { scrapeMovieDetails, scrapeMovies } from '../scrapers/movie.scraper';
+import { scrapeMovieDetails, scrapeMovies } from '../scrapers/movie';
 
 type TController = (req: Request, res: Response, next?: Next) => Promise<void>;
 
