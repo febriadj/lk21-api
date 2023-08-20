@@ -15,7 +15,9 @@ export const latestSeries: TController = async (req, res) => {
     const { page = 0 } = req.query;
 
     const axiosRequest = await axios.get(
-      `${process.env.ND_URL}/latest${Number(page) > 1 ? `/page/${page}` : ''}`
+      `${process.env.ND_URL}/latest-series${
+        Number(page) > 1 ? `/page/${page}` : ''
+      }`
     );
 
     const payload = await scrapeSeries(req, axiosRequest);

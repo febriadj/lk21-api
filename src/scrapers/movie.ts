@@ -44,10 +44,11 @@ export const scrapeMovies = async (
       const obj = {} as IMovies;
 
       obj['_id'] = movieId;
-      obj['title'] = $(parent).find('figure > a > img').attr('alt') ?? '';
+      obj['title'] =
+        $(parent).find('figure > a > picture > img').attr('alt') ?? '';
       obj['type'] = 'movie';
       obj['posterImg'] = `https:${$(parent)
-        .find('figure > a > img')
+        .find('figure > a > picture > img')
         .attr('src')}`;
       obj['rating'] = $(parent).find('figure').find('div.rating').text();
       obj['url'] = `${protocol}://${host}/movies/${movieId}`;
@@ -86,10 +87,11 @@ export const scrapeMovieDetails = async (
   $('div.content').find('blockquote').find('strong').remove();
 
   obj['_id'] = originalUrl.split('/').reverse()[0];
-  obj['title'] = $('div.content-poster').find('figure > img').attr('alt') ?? '';
+  obj['title'] =
+    $('div.content-poster').find('figure > picture > img').attr('alt') ?? '';
   obj['type'] = 'movie';
   obj['posterImg'] = `https:${$('div.content-poster')
-    .find('figure > img')
+    .find('figure > picture > img')
     .attr('src')}`;
 
   $('div.content > div').each((i, el) => {
