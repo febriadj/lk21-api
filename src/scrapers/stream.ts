@@ -10,31 +10,31 @@ import { IStreamSources } from '../types';
  * @returns {Promise.<IStreamSources[]>} array of stream sources objects
  */
 export const scrapeStreamSources = async (
-  req: Request,
-  res: AxiosResponse
+    req: Request,
+    res: AxiosResponse
 ): Promise<IStreamSources[]> => {
-  const $: cheerio.Root = cheerio.load(res.data);
-  const payload: IStreamSources[] = [];
+    const $: cheerio.Root = cheerio.load(res.data);
+    const payload: IStreamSources[] = [];
 
-  $('div#load-sources')
-    .find('ul > li')
-    .each((i, el) => {
-      const obj = {} as IStreamSources;
+    $('div#load-sources')
+        .find('ul > li')
+        .each((i, el) => {
+            const obj = {} as IStreamSources;
 
-      const resolutions: string[] = [];
+            const resolutions: string[] = [];
 
-      $(el)
-        .find('div > span')
-        .each((i, el2) => {
-          resolutions.push($(el2).text());
+            $(el)
+                .find('div > span')
+                .each((i, el2) => {
+                    resolutions.push($(el2).text());
+                });
+
+            obj['provider'] = $(el).find('a').text();
+            obj['url'] = $(el).find('a').attr('href') ?? '';
+            obj['resolutions'] = resolutions;
+
+            payload.push(obj);
         });
 
-      obj['provider'] = $(el).find('a').text();
-      obj['url'] = $(el).find('a').attr('href') ?? '';
-      obj['resolutions'] = resolutions;
-
-      payload.push(obj);
-    });
-
-  return payload;
+    return payload;
 };

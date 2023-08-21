@@ -6,16 +6,16 @@ Unofficial LK21 (LayarKaca21) and NontonDrama APIs for streaming movies, animati
 
 ## Table of Contents
 
-- [Getting Started](#getting-started)
-  - [Installation](#installation)
-  - [Environment Variables](#environment-variables)
-- [Reference](#reference)
-  - [List of Endpoints](#list-of-endpoints)
-  - [Pagination](#pagination)
-- [FAQ](#faq)
-- [Showcase](#showcase)
-- [License](#license)
-- [Disclamer](#disclamer)
+-   [Getting Started](#getting-started)
+    -   [Installation](#installation)
+    -   [Environment Variables](#environment-variables)
+-   [Reference](#reference)
+    -   [List of Endpoints](#list-of-endpoints)
+    -   [Pagination](#pagination)
+-   [FAQ](#faq)
+-   [Showcase](#showcase)
+-   [License](#license)
+-   [Disclamer](#disclamer)
 
 ## Getting Started
 
@@ -125,7 +125,7 @@ To display the movie streaming sources in the `<iframe>` you need to run your ap
 
 List of projects using LK21 API:
 
-- ?
+-   ?
 
 ## License
 

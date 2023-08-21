@@ -11,21 +11,23 @@ type TController = (req: Request, res: Response, next?: Next) => Promise<void>;
  * @param {Next} next
  */
 export const streamMovie: TController = async (req, res) => {
-  try {
-    const { originalUrl } = req;
+    try {
+        const { originalUrl } = req;
 
-    const movieId = originalUrl.split('/').reverse()[1];
+        const movieId = originalUrl.split('/').reverse()[1];
 
-    const axiosRequest = await axios.get(`${process.env.LK21_URL}/${movieId}`);
+        const axiosRequest = await axios.get(
+            `${process.env.LK21_URL}/${movieId}`
+        );
 
-    const payload = await scrapeStreamSources(req, axiosRequest);
+        const payload = await scrapeStreamSources(req, axiosRequest);
 
-    res.status(200).json(payload);
-  } catch (err) {
-    console.error(err);
+        res.status(200).json(payload);
+    } catch (err) {
+        console.error(err);
 
-    res.status(400).json(null);
-  }
+        res.status(400).json(null);
+    }
 };
 
 /**
@@ -35,25 +37,25 @@ export const streamMovie: TController = async (req, res) => {
  * @param {Next} next
  */
 export const streamSeries: TController = async (req, res) => {
-  try {
-    const { originalUrl } = req;
-    const { season = 1, episode = 1 } = req.query;
+    try {
+        const { originalUrl } = req;
+        const { season = 1, episode = 1 } = req.query;
 
-    const _ids = originalUrl.split('/').reverse()[1].split('-');
-    const year = _ids.pop();
+        const _ids = originalUrl.split('/').reverse()[1].split('-');
+        const year = _ids.pop();
 
-    const seriesId = _ids.join('-');
+        const seriesId = _ids.join('-');
 
-    const axiosRequest = await axios.get(
-      `${process.env.ND_URL}/${seriesId}-season-${season}-episode-${episode}-${year}`
-    );
+        const axiosRequest = await axios.get(
+            `${process.env.ND_URL}/${seriesId}-season-${season}-episode-${episode}-${year}`
+        );
 
-    const payload = await scrapeStreamSources(req, axiosRequest);
+        const payload = await scrapeStreamSources(req, axiosRequest);
 
-    res.status(200).json(payload);
-  } catch (err) {
-    console.error(err);
+        res.status(200).json(payload);
+    } catch (err) {
+        console.error(err);
 
-    res.status(400).json(null);
-  }
+        res.status(400).json(null);
+    }
 };

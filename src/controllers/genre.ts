@@ -12,17 +12,17 @@ type TController = (req: Request, res: Response, next?: Next) => Promise<void>;
  * @param {Next} next
  */
 export const setOfGenres: TController = async (req, res) => {
-  try {
-    const axiosRequest = await axios.get(`${process.env.LK21_URL}`);
+    try {
+        const axiosRequest = await axios.get(`${process.env.LK21_URL}`);
 
-    const payload = await scrapeSetOfGenres(req, axiosRequest);
+        const payload = await scrapeSetOfGenres(req, axiosRequest);
 
-    res.status(200).json(payload);
-  } catch (err) {
-    console.error(err);
+        res.status(200).json(payload);
+    } catch (err) {
+        console.error(err);
 
-    res.status(400).json(null);
-  }
+        res.status(400).json(null);
+    }
 };
 
 /**
@@ -32,22 +32,22 @@ export const setOfGenres: TController = async (req, res) => {
  * @param {Next} next
  */
 export const moviesByGenre: TController = async (req, res) => {
-  try {
-    const { page = 0 } = req.query;
-    const { genre } = req.params;
+    try {
+        const { page = 0 } = req.query;
+        const { genre } = req.params;
 
-    const axiosRequest = await axios.get(
-      `${process.env.LK21_URL}/genre/${genre.toLowerCase()}${
-        Number(page) > 1 ? `/page/${page}` : ''
-      }`
-    );
+        const axiosRequest = await axios.get(
+            `${process.env.LK21_URL}/genre/${genre.toLowerCase()}${
+                Number(page) > 1 ? `/page/${page}` : ''
+            }`
+        );
 
-    const payload = await scrapeMovies(req, axiosRequest);
+        const payload = await scrapeMovies(req, axiosRequest);
 
-    res.status(200).json(payload);
-  } catch (err) {
-    console.error(err);
+        res.status(200).json(payload);
+    } catch (err) {
+        console.error(err);
 
-    res.status(400).json(null);
-  }
+        res.status(400).json(null);
+    }
 };

@@ -6,19 +6,19 @@ import { searchedMoviesOrSeries } from '../controllers/search';
 import { moviesByCountry, setOfCountries } from '../controllers/country';
 
 import {
-  latestMovies,
-  movieDetails,
-  popularMovies,
-  recentReleaseMovies,
-  topRatedMovies,
+    latestMovies,
+    movieDetails,
+    popularMovies,
+    recentReleaseMovies,
+    topRatedMovies,
 } from '../controllers/movie';
 
 import {
-  latestSeries,
-  popularSeries,
-  recentReleaseSeries,
-  seriesDetails,
-  topRatedSeries,
+    latestSeries,
+    popularSeries,
+    recentReleaseSeries,
+    seriesDetails,
+    topRatedSeries,
 } from '../controllers/series';
 
 const router: IRouter = Router();

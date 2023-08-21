@@ -11,17 +11,19 @@ type TController = (req: Request, res: Response, next?: Next) => Promise<void>;
  * @param {Next} next
  */
 export const searchedMoviesOrSeries: TController = async (req, res) => {
-  try {
-    const { title = '' } = req.params;
+    try {
+        const { title = '' } = req.params;
 
-    const axiosRequest = await axios.get(`${process.env.LK21_URL}/?s=${title}`);
+        const axiosRequest = await axios.get(
+            `${process.env.LK21_URL}/?s=${title}`
+        );
 
-    const payload = await scrapeSearchedMoviesOrSeries(req, axiosRequest);
+        const payload = await scrapeSearchedMoviesOrSeries(req, axiosRequest);
 
-    res.status(200).json(payload);
-  } catch (err) {
-    console.error(err);
+        res.status(200).json(payload);
+    } catch (err) {
+        console.error(err);
 
-    res.status(400).json(null);
-  }
+        res.status(400).json(null);
+    }
 };
