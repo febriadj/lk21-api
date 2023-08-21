@@ -1,8 +1,8 @@
 import cheerio from 'cheerio';
 import { AxiosResponse } from 'axios';
 import { Request } from 'express';
-import { ISetOfGenres } from '../types';
-import genres from '../json/genres.json';
+import { ISetOfGenres } from '@/types';
+import genres from '@/json/genres.json';
 
 /**
  * Scrape a set of genres asynchronously

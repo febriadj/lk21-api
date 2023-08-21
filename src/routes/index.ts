@@ -1,9 +1,9 @@
 import { Router, IRouter } from 'express';
-import { streamSeries, streamMovie } from '../controllers/stream';
-import { moviesByGenre, setOfGenres } from '../controllers/genre';
-import { moviesByYear, setOfYears } from '../controllers/year';
-import { searchedMoviesOrSeries } from '../controllers/search';
-import { moviesByCountry, setOfCountries } from '../controllers/country';
+import { streamSeries, streamMovie } from '@/controllers/stream';
+import { moviesByGenre, setOfGenres } from '@/controllers/genre';
+import { moviesByYear, setOfYears } from '@/controllers/year';
+import { searchedMoviesOrSeries } from '@/controllers/search';
+import { moviesByCountry, setOfCountries } from '@/controllers/country';
 
 import {
     latestMovies,

@@ -1,7 +1,7 @@
 import cheerio from 'cheerio';
 import { AxiosResponse } from 'axios';
 import { Request } from 'express';
-import { ISeasonsList, ISeries, ISeriesDetails } from '../types';
+import { ISeasonsList, ISeries, ISeriesDetails } from '@/types';
 
 /**
  * Scrape series asynchronously
