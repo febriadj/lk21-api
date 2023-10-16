@@ -21,6 +21,8 @@ import {
     topRatedSeries,
 } from '../controllers/series';
 
+import { downloadMovie, downloadSeries } from '@/controllers/download';
+
 const router: IRouter = Router();
 
 router.get('/movies', latestMovies);
@@ -30,6 +32,7 @@ router.get('/top-rated/movies', topRatedMovies);
 router.get('/movies/:id', movieDetails);
 
 router.get('/movies/:id/streams', streamMovie);
+router.get('/movies/:id/download', downloadMovie);
 
 router.get('/genres', setOfGenres);
 router.get('/genres/:genre', moviesByGenre);
@@ -47,6 +50,7 @@ router.get('/top-rated/series', topRatedSeries);
 router.get('/series/:id', seriesDetails);
 
 router.get('/series/:id/streams', streamSeries);
+router.get('/series/:id/downloads', downloadSeries);
 
 router.get('/search/:title', searchedMoviesOrSeries);
 

@@ -80,3 +80,9 @@ export interface ISearchedMoviesOrSeries {
     directors: string[];
     casts: string[];
 }
+
+export interface IDownloads {
+    server: string;
+    link: string;
+    quality: string;
+}
